@@ -1,0 +1,380 @@
+#include "stdafx.h"
+#include <iostream> 
+#include <stdlib.h>
+#include <string>
+#include <stdio.h>
+#include <chrono>
+#include <thread>
+#include <conio.h>
+#include <windows.h> 
+#include <random>
+#include <cstdlib>
+#include <fstream>
+#include <time.h>
+#include "TextHandler.h"
+using namespace std;
+using namespace this_thread;
+using namespace chrono;
+void setcolor(unsigned short color) {
+	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hcon, color);
+}
+int x, st, n, kk, nk;
+char re, hn, ans;
+int test = 1;
+string h;
+class Handler {
+public:
+#define M_N1 setcolor(2); cout << "   |MINES OF LEYWN|"; setcolor(7); cout << "                    ########### "; setcolor(5); cout << "Character Creator"; setcolor(7); cout << " ###########" << endl; setcolor(6); cout << "        V.2.1                          "; setcolor(7); cout << "#     (1) Gender, Age, Name.            #" << endl; cout << "                                       #     (2) Class                         #" << endl; setcolor(3); cout << "   Save Data"; setcolor(7); cout << ": Null"; cout << "                     #     (3) Race                          #" << endl; cout << "   Press '0' for help                  #     (4) Save/Load                     #" << endl; cout << "                                       #     (5) "; setcolor(9); cout << "Start Game                    "; setcolor(7); cout << "#" << endl; cout << "                                       #     (6) Options                       #" << endl; cout << "                                       #########################################" << endl; cout << "                                                                               " << endl;  cout << "                                       _____________________________           " << endl; 	cout << "                                       | Game made by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "|          " << endl; cout << "                                       | Written by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "  |          " << endl; 	cout << "                                       | Code by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "     |          " << endl; cout << "                                       |____________________________|          " << endl; cout << "      "; setcolor(4); cout << "LOG                                                                      " << endl; setcolor(7); cout << "-------------------------------------------------------------------------------" << endl;
+#define Main_Screen cout << "=========================================================================" << endl, cout << "|"; setcolor(4); cout << " Hp"; setcolor(7); cout << "- " << p1.hp << " |" << "     | Lvl- " << p1.lvl << " |" << endl, cout << "| Gp- " << p1.gold << " |" << "     | Status- " << p1.status << " |" << endl, cout << "=========================================================================" << endl;
+};
+class GameLoad {
+public:
+	struct TmpDt {
+		string loaddat;
+	};
+	TmpDt dt;
+	void titleCard() {
+
+		system("COLOR 0F");
+		cout << "============================================================================================================= " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  =========================================    ========  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=   ===   ========================================  ==  =======  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =   =  ========================================  ===========  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=  == ==  ==  ==  = ====   ====   =========   ===    ==========  =========   ===  =  ==  =   =  ==  = ======= " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ======     ==  =  ==  =  =======     ===  ===========  ========  =  ==  =  ==  =   =  ==     ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==     ===  =========  =  ===  ===========  ========     ===    ===   =   ===  =  ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==  =======  ========  =  ===  ===========  ========  ========  ===   =   ===  =  ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==  =  ==  =  =======  =  ===  ===========  ========  =  ==  =  ==== === ====  =  ====== " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ===   ====   =========   ====  ===========        ===   ====   ===== === ====  =  ====== " << endl;
+		sleep_for(seconds(1));
+		cout << "============================================================================================================= " << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		sleep_for(seconds(5));
+		system("CLS");
+		system("color 3");
+
+	}
+	void LoadGame() {
+		cout << "=================================================================" << endl;
+		cout << "                    Game Loading...                              " << endl;
+		cout << "=================================================================" << endl << endl;
+		sleep_for(seconds(3));
+		cout << "Loading Main Files..." << "                                                          (Loading like this cleans some lag)" << endl;
+		sleep_for(seconds(3));
+		cout << "Loading Core.cpp..." << endl;
+		sleep_for(seconds(1));
+		cout << "Loading Handler.h..." << endl;
+		sleep_for(seconds(1));
+		cout << "Loading TextHandler.cpp..." << endl;
+		sleep_for(seconds(1));
+		cout << "Initializing..." << endl;
+		sleep_for(seconds(1));
+		system("CLS");
+
+	}
+};
+GameLoad gl;
+struct player {
+public:
+	int lvl;
+	int age;
+	int hp = 10;
+	string name;
+	string gender;
+	bool gcheck;
+	string Class;
+	bool Ccheck;
+	string race;
+	bool rchechk;
+	string status;
+	int gold = 20;
+	int xp;
+};
+player p1;
+struct Data {
+	string data;
+	string data1;
+	string data2;
+	string data3;
+	string info;
+};
+Data d1;
+struct TempData {
+	bool TF;
+	int Num;
+	bool exit = false;
+};
+TempData tp;
+
+void GameState() {
+	system("CLS");
+	Main_Screen;
+	cout << endl;
+	cout << "1.) Look" << endl;
+	cout << "2.) Move" << endl;
+	cout << "3.) Inventory" << endl;
+	cin >> x;
+	system("pause");
+}
+void Intro() {
+	system("CLS");
+	char xn;
+	cout << "Press 'A' to skip intro?";
+	cin >> xn;
+	switch (xn) {
+	case 'a':
+		goto skip;
+		break;
+	default:
+		goto noskip;
+	}
+noskip:
+	system("CLS");
+	cout << "You pull the door open slowly." << endl;
+	sleep_for(seconds(2));
+	cout << "Cold dry air blows steadily against you." << endl;
+	sleep_for(seconds(1));
+	cout << "You take a deep breath and walk in." << endl;
+	sleep_for(seconds(3));
+	system("CLS");
+	sleep_for(seconds(2));
+	if (p1.Ccheck = true) {
+		p1.hp = 14;
+	}
+	if (p1.Ccheck = false) {
+		p1.hp = 10;
+	}
+	gl.titleCard();
+	system("CLS");
+skip:
+	cout << "---------------Chapter One: Enter---------------" << endl << endl;
+	sleep_for(seconds(3));
+	cout << "As you enter a swriling wind fills the room and a spirit makes himself known." << endl;
+	sleep_for(seconds(3));
+	cout << "You notice a decrepit shop face slowly turn near-new as the phantom takes a seat at a stool behind it." << endl;
+	sleep_for(seconds(3));
+	cout << "He gestures to the suddenly appearing inventory in his shop, 'Interested?'" << endl;
+	sleep_for(seconds(3));
+	cout << "Y/N" << endl;
+	cin >> ans;
+	switch (ans) {
+	case 'y':
+		cout << "The ghost chuckles, 'Have a look'" << endl;
+		GameState();
+		system("pause");
+		break;
+	case 'n':
+		//Finish this
+		cout << "The ghost stares at you oddly, 'So be it' " << endl;
+		break;
+	}
+
+
+}
+void Creation() {
+	system("CLS");
+	p1.status = "Okay";
+
+	char ch;
+creator:
+	system("CLS");
+	{
+
+		M_N1;
+
+		cout << " " << d1.data << endl;
+		cout << " " << d1.data1 << endl;
+		cout << " " << d1.data2 << endl;
+		cout << " " << d1.data3 << endl;
+	}
+	ch = _getche();
+	switch (toupper(ch)) {
+
+
+
+	case '1':
+		system("CLS");
+		cout << "What's betweem your legs?" << endl;
+		cout << "(1) Male  (2) Female" << endl;
+		char cn;
+		cn = _getche();
+		switch (cn) {
+		case '1':
+			p1.gender = "male";
+			system("CLS");
+			goto age;
+			break;
+		case '2':
+			p1.gender = " female";
+			system("CLS");
+			goto age;
+			break;
+		default:
+			goto creator;
+		}
+	age:
+		system("CLS");
+		cout << "How old are you? ";
+		cin >> p1.age;
+		cout << "What is your name? ";
+		cin >> p1.name;
+		system("CLS");
+		goto creator;
+		break;
+	case '2':
+		system("CLS");
+		cout << "Time to pick your class!" << endl;
+		cout << "(1) Warrior" << endl;
+		cout << "(2) Wizard" << endl;
+		ch = _getche();
+		if (toupper(ch) == '1') {
+			system("CLS");
+			p1.Ccheck = true;
+			p1.Class = "Warrior"; cout << endl;
+			cout << "We welcome a new Warrior to our ranks!";
+			sleep_for(seconds(2));
+			system("CLS");
+			goto creator;
+		}
+		if (toupper(ch) == '2') {
+			system("CLS");
+			p1.Ccheck = false;
+			p1.Class = "Wizard"; cout << endl;
+			cout << "We welcome a new Wizard to our ranks!";
+			sleep_for(seconds(2));
+			system("CLS");
+			goto creator;
+
+		}
+		else {
+			goto creator;
+		}
+		break;
+	case '3':
+		system("CLS");
+		cout << "(1) Elf" << endl;
+		cout << "(2) Human" << endl;
+		cout << "(3) Dwarf" << endl;
+		ch = _getche();
+		if (toupper(ch) == '1') {
+			system("CLS");
+			cout << "Welcome, Elf.";
+			p1.race = "Elf";
+			sleep_for(seconds(2));
+			system("CLS");
+			goto creator;
+		}
+		if (toupper(ch) == '2') {
+			system("CLS");
+			cout << "Welcome, Human.";
+			p1.race = "Human";
+			sleep_for(seconds(2));
+			system("CLS");
+			goto creator;
+		}
+		if (toupper(ch) == '3') {
+			system("CLS");
+			cout << "Welcome, Dwarf.";
+			p1.race = "Dwarf";
+			sleep_for(seconds(2));
+			system("CLS");
+			goto creator;
+		}
+		else {
+			goto creator;
+		}
+		break;
+	case '4':
+		d1.data = "Feature not finished";
+		d1.data1 = " ";
+		d1.data2 = "Sorry :c";
+		goto creator;
+		goto creator;
+		break;
+	case '5':
+		return;
+		break;
+	case '6':
+		system("CLS");
+		cout << "                 +OPTIONS+                 " << endl;
+		cout << "               1.) Change Background Color " << endl;
+		cout << "               2.) Remove Graphic depictions" << endl;
+		cin >> kk;
+		if (kk == '1') {
+			goto creator;
+		}
+		break;
+	case '0':
+		d1.data = "This is a simple game about going from room to room exploring an old mine";
+		d1.data1 = "Make a character by following the steps listed";
+		d1.data2 = "Simply press the number on your keyboard related to the selection you want";
+		system("CLS");
+		goto creator;
+		break;
+	default:
+		d1.data = "That's not a menu option!";
+		system("CLS");
+		goto creator;
+		break;
+	}
+}
+int main()
+{
+	gl.LoadGame();
+	Creation();
+	Intro();
+	GameState();
+	if (p1.age == 0) {
+		system("CLS");
+		cout << "Finish your set up";
+		sleep_for(seconds(2));
+		system("CLS");
+		Creation();
+	}
+	else {
+		goto Skip;
+		system("CLS");
+		cout << "You walk up the long winding dirt path" << endl;
+		sleep_for(seconds(4));
+		cout << "Wind rustles the trees as you reach the end of the path" << endl;
+		sleep_for(seconds(4));
+		cout << "Dug into the wall is a small short tunnel" << endl;
+		sleep_for(seconds(4));
+		cout << "At it's end you see a well worn wooden door" << endl;
+		sleep_for(seconds(4));
+		cout << "You ready yourself and and prepare to enter" << endl;
+		sleep_for(seconds(4));
+	Skip:
+		while (x <= 30) {
+			x++;
+			cout << endl;
+		}
+		//titleCard();
+		Intro();
+	}
+}
+
+int F() {
+	Creation();
+	while (true) {
+
+	}
+}
