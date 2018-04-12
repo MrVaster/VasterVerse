@@ -1,0 +1,159 @@
+#include "stdafx.h"
+#include <iostream> 
+#include <stdlib.h>
+#include <string>
+#include <stdio.h>
+#include <chrono>
+#include <thread>
+#include <conio.h>
+#include <windows.h> 
+#include <random>
+#include <cstdlib>
+#include <fstream>
+#include <time.h>
+#include "TextHandler.h"
+using namespace std;
+using namespace this_thread;
+using namespace chrono;
+
+//Allows for use of colored text
+void setcolor(unsigned short color) {
+	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hcon, color);
+}
+int x, st, n, kk, nk;
+char ch;
+int test = 1;
+string h;
+
+//Handles the main menu graphic
+class Handler {
+public:
+#define M_N1 setcolor(2); cout << "   |MINES OF LEYWN|"; setcolor(7); cout << "                    ########### "; setcolor(5); cout << "Character Creator"; setcolor(7); cout << " ###########" << endl; setcolor(6); cout << "        V.2.1                          "; setcolor(7); cout << "#     (1) Gender and Name.              #" << endl; cout << "                                       #     (2) Class                         #" << endl; setcolor(3); cout << "   Save Data"; setcolor(7); cout << ": Null"; cout << "                     #     (3) Race                          #" << endl; cout << "   Press '0' for help                  #     (4) Save/Load                     #" << endl; cout << "                                       #     (5) "; setcolor(9); cout << "Start Game                    "; setcolor(7); cout << "#" << endl; cout << "                                       #     (6) Options                       #" << endl; cout << "                                       #########################################" << endl; cout << "                                                                               " << endl;  cout << "                                       _____________________________           " << endl; 	cout << "                                       | Game made by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "|          " << endl; cout << "                                       | Written by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "  |          " << endl; 	cout << "                                       | Code by: "; setcolor(3); cout << "Davis Hughes "; setcolor(7); cout << "     |          " << endl; cout << "                                       |____________________________|          " << endl; cout << "      "; setcolor(4); cout << "LOG                                                                      " << endl; setcolor(7); cout << "-------------------------------------------------------------------------------" << endl;
+#define Main_Screen cout << "=========================================================================" << endl, cout << "|"; setcolor(4); cout << " Hp"; setcolor(7); cout << "- " << p1.hp << " |" << "     | Lvl- " << p1.lvl << " |" << endl, cout << "| Gp- " << p1.gold << " |" << "     | Status- " << p1.status << " |" << endl, cout << "=========================================================================" << endl;
+};
+
+//Handles the first two loading screens of the game as well as the vector loading.
+class GameLoad {
+public:
+	void titleCard() {
+
+		system("COLOR 0F");
+		cout << "============================================================================================================= " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  =========================================    ========  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=   ===   ========================================  ==  =======  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =   =  ========================================  ===========  ============================================ " << endl;
+		sleep_for(seconds(1));
+		cout << "=  == ==  ==  ==  = ====   ====   =========   ===    ==========  =========   ===  =  ==  =   =  ==  = ======= " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ======     ==  =  ==  =  =======     ===  ===========  ========  =  ==  =  ==  =   =  ==     ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==     ===  =========  =  ===  ===========  ========     ===    ===   =   ===  =  ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==  =======  ========  =  ===  ===========  ========  ========  ===   =   ===  =  ======" << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ==  =  ==  =  =======  =  ===  ===========  ========  =  ==  =  ==== === ====  =  ====== " << endl;
+		sleep_for(seconds(1));
+		cout << "=  =====  ==  ==  =  ===   ====   =========   ====  ===========        ===   ====   ===== === ====  =  ====== " << endl;
+		sleep_for(seconds(1));
+		cout << "============================================================================================================= " << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		sleep_for(seconds(5));
+		system("CLS");
+		system("color 3");
+		cout << "=================================================================" << endl;
+		cout << "                    Game Loading...                              " << endl;
+		cout << "=================================================================" << endl << endl;
+		sleep_for(seconds(3));
+		cout << "Loading Main Files..." << endl;
+		sleep_for(seconds(3));
+		cout << "Loading Core.cpp..." << endl;
+		sleep_for(seconds(1));
+		cout << "Loading Handler.h..." << endl;
+		sleep_for(seconds(1));
+		cout << "Loading TextHandler.cpp..." << endl;
+		sleep_for(seconds(1));
+		cout << "Initializing..." << endl;
+		sleep_for(seconds(1));
+		system("CLS");
+
+
+	}
+};
+GameLoad gl;
+
+//Basic player class
+class player {
+public:
+	void GetName() {
+
+	}
+	void GetGender() {
+
+	}
+	void GetClass() {
+
+	}
+	void GetRace() {
+
+	}
+	int lvl;
+	int age;
+	int hp;
+	string name;
+};
+player p1;
+
+//Character creation 
+void Creation() {
+	system("CLS");
+		M_N1;
+	ch = _getche();
+	while (true) {
+		switch (toupper(ch)) {
+		case '1':
+			cout << "Hello";
+			break;
+
+		}
+}
+}
+
+int main()
+{
+	//Loads intro
+	//gl.titleCard();
+	Creation();
+
+	//Main game loop
+	while (true) {
+
+	}
+}
+
+//Example code for loading data from a txt file
+void DataLoad() {
+	system("CLS");
+	string line;
+	ifstream myfile("DATA.txt");
+	if (myfile.is_open())
+	{
+
+		while (getline(myfile, line)) {
+			cout << line << endl;
+		}
+		myfile.close();
+	}
+	system("PAUSE");
+}
